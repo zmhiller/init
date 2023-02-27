@@ -14,7 +14,7 @@ echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m      Apt Update\033[1
 	&& echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m    Snap Refresh\033[1;36m\n--------------------\033[0m\n" && snap refresh && echo -e -n "\n\v"
 echo 'set completion-ignore-case On' >> /etc/inputrc
 echo -e -n "\n\v\033[1;36m---------------------\n\033[1;33m Installing Utilities\033[1;36m\n---------------------\033[0m\n"
-apt install -y git gh curl neofetch htop lolcat php-zip net-tools nano mlocate
+apt install -y git gh curl neofetch htop lolcat php-zip net-tools nano mlocate members
 
 #
 # Install Starship prompt & JetBrainsMono Nerd Font package
@@ -33,8 +33,6 @@ echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m Creating Admin User\0
 useradd -m -U -s /bin/bash -p "saWKjq.ZH/kSA" admin
 usermod -aG sudo admin
 
-echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m Creating Admin User\033[1;36m\n--------------------\033[0m\n"
-
 #
 # Download Bash & Starship config files
 #
@@ -47,27 +45,11 @@ cd /root
 mv .bashrc .bashrc.BAK && curl -fLo .bashrc https://raw.githubusercontent.com/zmhiller/init/main/Bash/.bashrc
 cd /home/admin && mv .basrc .bashrc.BAK && cp /root/.bashrc .bashrc
 curl -fLo .bash_aliases https://raw.githubusercontent.com/zmhiller/init/main/Bash/.bash_aliases
-mkdir .config && cd .config
-curl -fLo starship.toml https://raw.githubusercontent.com/zmhiller/init/main/Starship/starship.toml
-chown -R admin /home/admin && chgrp -R admin /home/admin
-chmod -R 744 /home/admin
+#mkdir .config && cd .config
+#curl -fLo starship.toml https://raw.githubusercontent.com/zmhiller/init/main/Starship/starship.toml
+#chown -R admin /home/admin && chgrp -R admin /home/admin
+#chmod -R 744 /home/admin
 
-echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m  Installing Docker\033[1;36m\n--------------------\033[0m\n"
-su admin
-sudo apt remove docker docker-engine docker.io containerd runc
-sudo apt install -y ca-certificates gnupg lsb-release
-sudo mkdir -m 0755 -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-usermod -aG docker admin
-
-echo -e -n "\n\v\033[1;36m---------------------\n\033[1;33mConfiguring Portainer\033[1;36m\n---------------------\033[0m\n"
-docker volume create portainer_data
-
-echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m      Finishing\033[1;36m\n--------------------\033[0m\n"
+echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33mFinishing.... Login:\033[1;36m\n--------------------\033[0m\n"
 
 login admin
-

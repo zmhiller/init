@@ -14,7 +14,7 @@ echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m      Apt Update\033[1
 	&& echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m    Snap Refresh\033[1;36m\n--------------------\033[0m\n" && snap refresh && echo -e -n "\n\v"
 echo 'set completion-ignore-case On' >> /etc/inputrc
 echo -e -n "\n\v\033[1;36m---------------------\n\033[1;33m Installing Utilities\033[1;36m\n---------------------\033[0m\n"
-apt install -y git gh curl neofetch htop lolcat php-zip net-tools nano mlocate
+apt install -y git gh curl neofetch htop lolcat php-zip net-tools nano mlocate members
 
 #
 # Install Starship prompt & JetBrainsMono Nerd Font package
