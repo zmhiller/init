@@ -50,20 +50,19 @@ curl -fLo .bash_aliases https://raw.githubusercontent.com/zmhiller/init/main/Bas
 chown -R admin /home/admin && chgrp -R admin /home/admin
 chmod -R 744 /home/admin
 
-echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m  Installing Docker\n   Enter Password\n      then exit\033[1;36m\n--------------------\033[0m\n"
-login admin
-sudo apt remove docker docker-engine docker.io containerd runc
-sudo apt install -y ca-certificates gnupg lsb-release
-sudo mkdir -m 0755 -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m  Installing Docker\033[1;36m\n--------------------\033[0m\n"
+apt remove docker docker-engine docker.io containerd runc
+apt install -y ca-certificates gnupg lsb-release
+mkdir -m 0755 -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo usermod -aG docker admin
+  $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt update
+apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+usermod -aG docker admin
 
 echo -e -n "\n\v\033[1;36m---------------------\n\033[1;33mConfiguring Portainer\033[1;36m\n---------------------\033[0m\n"
-sudo mkdir -p /docker/containers && cd /docker/containers
+mkdir -p /docker/containers && cd /docker/containers
 docker volume create portainer_data
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 docker run -d \
@@ -73,7 +72,8 @@ docker run -d \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /var/lib/docker/volumes:/var/lib/docker/volumes \
   portainer/agent:2.17.0
-
+chown -R admin /docker
+chgrp -R admin /docker
 
 echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33mFinishing.... Login:\033[1;36m\n--------------------\033[0m\n"
 
