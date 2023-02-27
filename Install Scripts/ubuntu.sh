@@ -19,12 +19,12 @@ apt install -y git gh curl neofetch htop lolcat php-zip net-tools nano
 #
 # Install Starship prompt & JetBrainsMono Nerd Font package
 #
-echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m Installing Starship\033[1;36m\n--------------------\033[0m\n"
-git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts
-cd nerd-fonts && git sparse-checkout add patched-fonts/JetBrainsMono && ./install.sh
-cd / && rm -rf nerd-fonts
-
-curl -sS https://starship.rs/install.sh | sh
+#echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m Installing Starship\033[1;36m\n--------------------\033[0m\n"
+#git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts
+#cd nerd-fonts && git sparse-checkout add patched-fonts/JetBrainsMono && ./install.sh
+#cd / && rm -rf nerd-fonts
+#
+#curl -sS https://starship.rs/install.sh | sh
 
 #
 # Create & configure SysAdmin account
@@ -44,10 +44,10 @@ curl -fLo bash.bash_aliases https://raw.githubusercontent.com/zmhiller/init/main
 cd /home/admin
 mv .bashrc .bashrc.BAK && curl -fLo .bashrc https://raw.githubusercontent.com/zmhiller/init/main/Bash/.bashrc
 curl -fLo .bash_aliases https://raw.githubusercontent.com/zmhiller/init/main/Bash/.bash_aliases
-mkdir .config && cd /.config
+mkdir .config && cd .config
 curl -fLo starship.toml https://raw.githubusercontent.com/zmhiller/init/main/Starship/starship.toml
 chown -R admin /home/admin && chgrp -R admin /home/admin
-chmod -R 744 admin /home/admin
+chmod -R 744 /home/admin
 
 echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m      Finishing\033[1;36m\n--------------------\033[0m\n"
 
