@@ -21,8 +21,7 @@ apt install -y git gh curl neofetch htop lolcat php-zip net-tools nano
 #
 echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m Installing Starship\033[1;36m\n--------------------\033[0m\n"
 git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts
-cd nerd-fonts && git sparse-checkout add patched-fonts/JetBrainsMono
-mkdir -p /usr/share/fonts/nerdfonts && mv -v /nerd-fonts/* /usr/share/fonts/nerdfonts/
+cd nerd-fonts && git sparse-checkout add patched-fonts/JetBrainsMono && ./install.sh
 cd / && rm -rf nerd-fonts
 
 curl -sS https://starship.rs/install.sh | sh
@@ -47,8 +46,8 @@ mv .bashrc .bashrc.BAK && curl -fLo .bashrc https://raw.githubusercontent.com/zm
 curl -fLo .bash_aliases https://raw.githubusercontent.com/zmhiller/init/main/Bash/.bash_aliases
 mkdir .config && cd /.config
 curl -fLo starship.toml https://raw.githubusercontent.com/zmhiller/init/main/Starship/starship.toml
-chown -R /home/admin admin && chgrp -R /home/admin admin
-chmod -R 744 /home/admin
+chown -R admin /home/admin && chgrp -R admin /home/admin
+chmod -R 744 admin /home/admin
 
 echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m      Finishing\033[1;36m\n--------------------\033[0m\n"
 
