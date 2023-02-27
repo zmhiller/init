@@ -20,7 +20,7 @@ apt install -y git gh curl neofetch htop lolcat php-zip net-tools nano
 # Install Starship prompt & JetBrainsMono Nerd Font package
 #
 echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m Installing Starship\033[1;36m\n--------------------\033[0m\n"
-git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
+git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts
 cd nerd-fonts && git sparse-checkout add patched-fonts/JetBrainsMono
 mkdir -p /usr/share/fonts/nerdfonts && mv -v /nerd-fonts/* /usr/share/fonts/nerdfonts/
 cd / && rm -rf nerd-fonts
