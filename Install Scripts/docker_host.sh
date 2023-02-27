@@ -63,7 +63,7 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 sudo usermod -aG docker admin
 
 echo -e -n "\n\v\033[1;36m---------------------\n\033[1;33mConfiguring Portainer\033[1;36m\n---------------------\033[0m\n"
-mkdir -p /docker/containers && cd /docker/containers
+sudo mkdir -p /docker/containers && cd /docker/containers
 docker volume create portainer_data
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 docker run -d \
