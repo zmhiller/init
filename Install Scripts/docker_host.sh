@@ -50,7 +50,7 @@ curl -fLo .bash_aliases https://raw.githubusercontent.com/zmhiller/init/main/Bas
 #chown -R admin /home/admin && chgrp -R admin /home/admin
 #chmod -R 744 /home/admin
 
-echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m  Installing Docker\nEnter Password\n      then exit\033[1;36m\n--------------------\033[0m\n"
+echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m  Installing Docker\n   Enter Password\n      then exit\033[1;36m\n--------------------\033[0m\n"
 login admin
 sudo apt remove docker docker-engine docker.io containerd runc
 sudo apt install -y ca-certificates gnupg lsb-release
