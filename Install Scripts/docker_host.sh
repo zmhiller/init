@@ -33,8 +33,6 @@ echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m Creating Admin User\0
 useradd -m -U -s /bin/bash -p "saWKjq.ZH/kSA" admin
 usermod -aG sudo admin
 
-echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m Creating Admin User\033[1;36m\n--------------------\033[0m\n"
-
 #
 # Download Bash & Starship config files
 #
@@ -77,7 +75,6 @@ docker run -d \
   portainer/agent:2.17.0
 
 
-echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m      Finishing\033[1;36m\n--------------------\033[0m\n"
+echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33mFinishing.... Login:\033[1;36m\n--------------------\033[0m\n"
 
-#login admin
-
+login admin
