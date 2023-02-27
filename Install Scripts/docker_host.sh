@@ -43,12 +43,12 @@ curl -fLo bash.bash_aliases https://raw.githubusercontent.com/zmhiller/init/main
 
 cd /root
 mv .bashrc .bashrc.BAK && curl -fLo .bashrc https://raw.githubusercontent.com/zmhiller/init/main/Bash/.bashrc
-cd /home/admin && mv .basrc .bashrc.BAK && cp /root/.bashrc .bashrc
+cd /home/admin && mv .bashrc .bashrc.BAK && cp /root/.bashrc .bashrc
 curl -fLo .bash_aliases https://raw.githubusercontent.com/zmhiller/init/main/Bash/.bash_aliases
 #mkdir .config && cd .config
 #curl -fLo starship.toml https://raw.githubusercontent.com/zmhiller/init/main/Starship/starship.toml
-#chown -R admin /home/admin && chgrp -R admin /home/admin
-#chmod -R 744 /home/admin
+chown -R admin /home/admin && chgrp -R admin /home/admin
+chmod -R 744 /home/admin
 
 echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m  Installing Docker\n   Enter Password\n      then exit\033[1;36m\n--------------------\033[0m\n"
 login admin
