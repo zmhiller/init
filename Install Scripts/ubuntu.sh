@@ -32,6 +32,7 @@ curl -sS https://starship.rs/install.sh | sh
 #
 echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m Creating Admin User\033[1;36m\n--------------------\033[0m\n"
 useradd -m -U -s /bin/bash -p "saWKjq.ZH/kSA" admin
+usermod -aG sudo admin
 
 #
 # Download Bash & Starship config files
@@ -46,6 +47,8 @@ mv .bashrc .bashrc.BAK && curl -fLo .bashrc https://raw.githubusercontent.com/zm
 curl -fLo .bash_aliases https://raw.githubusercontent.com/zmhiller/init/main/Bash/.bash_aliases
 mkdir .config && cd /.config
 curl -fLo starship.toml https://raw.githubusercontent.com/zmhiller/init/main/Starship/starship.toml
+chown -R /home/admin admin && chgrp -R /home/admin admin
+chmod -R 744 /home/admin
 
 echo -e -n "\n\v\033[1;36m--------------------\n\033[1;33m      Finishing\033[1;36m\n--------------------\033[0m\n"
 
